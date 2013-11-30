@@ -1,0 +1,15 @@
+name = Location Sports
+description = Components related to locations association with sport activities
+core = 7.x
+package = Schemax
+version = 7.x-1.0-alpha1
+project = schemax_location_sports
+dependencies[] = features
+dependencies[] = options
+dependencies[] = schemax_mapping
+dependencies[] = taxonomy
+features[features_api][] = api:2
+features[field_base][] = field_schemax_playing_surface
+features[field_instance][] = node-schemax_location-field_schemax_playing_surface
+features[taxonomy][] = playing_surface
+project path = sites/all/modules/custom
