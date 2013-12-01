@@ -10,7 +10,7 @@
 function schemax_location_sports_taxonomy_default_vocabularies() {
   return array(
     'playing_surface' => array(
-      'name' => 'Playing Surface',
+      'name' => 'Playing surface',
       'machine_name' => 'playing_surface',
       'description' => 'e.g. artificial turf, grass, gravel, wood (indoor)',
       'hierarchy' => 0,

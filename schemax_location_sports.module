@@ -1,5 +1,74 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
  */
+
+/**
+ * Implements hook_menu().
+ */
+function schemax_location_sports_menu() {
+
+  $items = array();
+
+  // Menu link in navigation menu.
+  $items['content-reset'] = array(
+    'title' => 'Reset content',
+    'page callback' => 'schemax_location_sports_content_reset',
+    'access callback' => TRUE,
+  );
+
+  return $items;
+}
+
+function schemax_location_sports_content_reset() {
+
+  // create taxonomy terms for playing surface vocabulary
+  $taxonomy_playing_surface = array('Artificial turf','Grass', 'Gravel',);
+  $success_create_taxonomy_terms = schemax_location_sports_manage_taxonomy($taxonomy_playing_surface,'playing_surface');
+  drupal_set_message('created new taxonomy terms', $success_create_taxonomy_terms ? 'status' : 'error');
+
+  // create taxonomy terms for location type vocabulary
+  $taxonomy_location_type = array('Building','Field', 'Gym',);
+  $success_create_taxonomy_terms = schemax_location_sports_manage_taxonomy($taxonomy_location_type,'location_type');
+  drupal_set_message('created new taxonomy terms', $success_create_taxonomy_terms ? 'status' : 'error');
+
+  // create new users and assign roles and voice parts
+  //$success_create_users = create_new_users($taxonomy_terms);
+  //drupal_set_message('created new users', $success_create_users ? 'status' : 'error');
+
+  // Go to front page
+  drupal_goto('<front>');
+}
+
+function schemax_location_sports_manage_taxonomy($terms,$vocabulary_machine_name) {
+
+  // Load the taxonomy vocabulary object and get the vid
+  $vid =   taxonomy_vocabulary_machine_name_load($vocabulary_machine_name)->vid;
+
+  // delete any existing terms in vocabulary
+  $entity_type = 'taxonomy_term';
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', $entity_type)
+      ->propertyCondition('vid', (int) $vid, '=');
+  $result = $query->execute();
+
+  // If query successful, update retrieved entities.
+  if (isset($result[$entity_type])) {
+    $tids = array_keys($result[$entity_type]);
+    foreach ($tids as $tid) {
+      taxonomy_term_delete($tid);
+    }
+  }
+
+  foreach ($terms as $name) {
+
+    $term = new stdClass();
+    $term->name = $name;
+    $term->vid = $vid;
+    taxonomy_term_save($term);
+    $tid = $term->tid;
+  }
+
+  // if we got this far, function was successful
+  return true;
+}
