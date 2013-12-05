@@ -1,5 +1,5 @@
-name = Location Sports
-description = Components related to locations association with sport activities
+name = Schemax Location (Sports)
+description = Components related to locations associated with sport activities
 core = 7.x
 package = Schemax
 version = 7.x-1.0-alpha1
