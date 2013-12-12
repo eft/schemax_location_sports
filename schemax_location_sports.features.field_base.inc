@@ -10,13 +10,13 @@
 function schemax_location_sports_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_schemax_playing_surface'
-  $field_bases['field_schemax_playing_surface'] = array(
+  // Exported field_base: 'field_schemax_playing_surfaces'
+  $field_bases['field_schemax_playing_surfaces'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_schemax_playing_surface',
+    'field_name' => 'field_schemax_playing_surfaces',
     'foreign keys' => array(
       'tid' => array(
         'columns' => array(
@@ -35,7 +35,7 @@ function schemax_location_sports_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'playing_surface',
+          'vocabulary' => 'playing_surfaces',
           'parent' => 0,
         ),
       ),

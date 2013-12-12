@@ -11,7 +11,7 @@ function schemax_location_sports_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'node-schemax_location-field_schemax_playing_surface'
-  $field_instances['node-schemax_location-field_schemax_playing_surface'] = array(
+  $field_instances['node-schemax_location-field_schemax_playing_surfaces'] = array(
     'bundle' => 'schemax_location',
     'default_value' => NULL,
     'deleted' => 0,
@@ -32,8 +32,8 @@ function schemax_location_sports_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_schemax_playing_surface',
-    'label' => 'Playing Surface',
+    'field_name' => 'field_schemax_playing_surfaces',
+    'label' => 'Playing Surfaces',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -49,7 +49,7 @@ function schemax_location_sports_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Playing Surface');
+  t('Playing Surfaces');
 
   return $field_instances;
 }
